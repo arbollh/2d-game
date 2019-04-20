@@ -1,3 +1,30 @@
-Test file to make sure this is working!
 
-Editing ... :)
+
+
+Test file to make sure everyone can use GitHub.
+
+
+
+==================
+Follow these steps
+==================
+
+1) Visit the GitHub 2d-game repository (Link is on Trello "Quick Links" card)
+
+2) Click "Clone/Download" button and copy the link
+
+3) Open Sourcetree and select "New Clone from URL" and use the link you copied in step 2.
+
+4) Follow the prompts
+
+5) Edit this file by adding your name to the list at the bottom ("I was here...")
+
+6) Commit your changes and push
+
+
+
+===================================
+I was here, and GitHub works for me
+===================================
+
+* Ashley
