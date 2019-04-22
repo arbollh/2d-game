@@ -12,7 +12,11 @@ public class Player_Score : MonoBehaviour {
 	public GameObject playerScoreUI;
 
 
-	// Update is called once per frame
+	void Start () {
+		// Just for testing ...
+		DataManagement.dataManagement.LoadData();
+	}
+
 	void Update () {
 		timeLeft -= Time.deltaTime; // Ticks value down one second at a time
 //		Debug.Log (timeLeft);
@@ -38,7 +42,9 @@ public class Player_Score : MonoBehaviour {
 
 	void CountScore () {
 		playerScore = playerScore + (int)(timeLeft * 10);
-		Debug.Log (playerScore);
+//		Debug.Log (playerScore);
+		DataManagement.dataManagement.highScore = playerScore + (int)(timeLeft * 10);
+		DataManagement.dataManagement.SaveData (); // Saves game data
 	}
 }
 

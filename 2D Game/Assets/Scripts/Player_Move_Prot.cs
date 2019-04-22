@@ -9,9 +9,8 @@ public class Player_Move_Prot : MonoBehaviour {
 	public int playerJumpPower = 1250;
 	private float moveX; // Movement on the x-axis
 	public bool isGrounded;
+	public float playerRadius = 0.8f; // For raycast. Ex: Distance from (1) center of player sprite to (2) bottom of player sprite.
 
-
-	// Update is called once per frame
 	void Update () {
 		PlayerMove ();
 		PlayerRaycast ();
@@ -62,13 +61,13 @@ public class Player_Move_Prot : MonoBehaviour {
 
 		// Ray Up – For breaking boxes 
 		RaycastHit2D rayUp = Physics2D.Raycast (transform.position, Vector2.up); // Shoots a ray upwards
-		if (rayUp != null && rayUp.collider != null && rayUp.distance < 0.9f && rayUp.collider.tag == "Chest") {
+		if (rayUp != null && rayUp.collider != null && rayUp.distance < playerRadius && rayUp.collider.tag == "Chest") {
 			Destroy (rayUp.collider.gameObject);
 		}
 
 		// Ray Down – For jumping on enemies
 		RaycastHit2D rayDown = Physics2D.Raycast (transform.position, Vector2.down); // Shoots a ray downwards
-		if (rayDown != null && rayDown.collider != null && rayDown.distance < 0.9f && rayDown.collider.tag == "Enemy") {
+		if (rayDown != null && rayDown.collider != null && rayDown.distance < playerRadius && rayDown.collider.tag == "Enemy") {
 
 			// Makes player bounce up
 			GetComponent<Rigidbody2D> ().AddForce (Vector2.up * 1000);
@@ -83,7 +82,7 @@ public class Player_Move_Prot : MonoBehaviour {
 //			Destroy (rayDown.collider.gameObject);
 
 		}
-		if (rayDown != null && rayDown.collider != null && rayDown.distance < 0.9f && rayDown.collider.tag != "Enemy") {
+		if (rayDown != null && rayDown.collider != null && rayDown.distance < playerRadius && rayDown.collider.tag != "Enemy") {
 			isGrounded = true;
 		}
 	}
