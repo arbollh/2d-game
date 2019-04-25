@@ -8,8 +8,8 @@ public class Player_Move_Prot : MonoBehaviour {
 	private bool facingRight = false;
 	public int playerJumpPower = 1250;
 	private float moveX; // Movement on the x-axis
-	public bool isGrounded;
-	public float playerRadius = 0.8f; // For raycast. Ex: Distance from (1) center of player sprite to (2) bottom of player sprite.
+	public bool isGrounded; // If player is touching the ground. Used for preventing infinite jumping.
+	public float playerRadius = 0.8f; // For raycast. Distance from (A) center of player sprite to (B) bottom of player sprite.
 
 	void Update () {
 		PlayerMove ();

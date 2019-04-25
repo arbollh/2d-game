@@ -7,13 +7,14 @@ using UnityEngine.UI; // So we can access the UI elements
 public class Player_Score : MonoBehaviour {
 
 	public float timeLeft = 100; // Time left to finish the level
-	public int playerScore = 0; 
+	public static int playerScore = 0; 
 	public GameObject timeLeftUI;
 	public GameObject playerScoreUI;
+	public bool completedLevel = false;
 
 
 	void Start () {
-		// Just for testing ...
+		// Saves score between scenes
 		DataManagement.dataManagement.LoadData();
 	}
 
@@ -30,8 +31,11 @@ public class Player_Score : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D trig) {
 //		Debug.Log ("Touched the end of the level");
-		if (trig.gameObject.name == "EndLevel") {
+		if (trig.gameObject.name == "EndLevel" && completedLevel != true) {
+			completedLevel = true;
 			CountScore ();
+			// Uncomment the below code when we are ready to add the next level
+			// SceneManager.LoadScene ("Level_2");
 		}
 		if (trig.gameObject.name.Contains ("Coin")) {
 			playerScore += 10;
